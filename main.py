@@ -3,4 +3,6 @@ from DataProcesser import DataProcesser
 
 if __name__ == '__main__':
     dp = DataProcesser('data/prontos.json')
-    dp.process()
+    print(dp.get_input())
+
+    dp.save()
