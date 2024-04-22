@@ -25,12 +25,14 @@ class DataProcesser:
         self.__label_encoder_filename: str = 'label_encoder.pkl'
         self.__vectorizer_filename: str = 'vectorizer.pkl'
         self.__dict_vectorizer_filename: str = 'dict_vectorizer.pkl'
+        self.__encoded_labels_filename: str = 'labels.pkl'
 
         if (
                 self.__serializer.check_if_file_exists(self.__input_data_filename) and
                 self.__serializer.check_if_file_exists(self.__label_encoder_filename) and
                 self.__serializer.check_if_file_exists(self.__vectorizer_filename) and
-                self.__serializer.check_if_file_exists(self.__dict_vectorizer_filename)):
+                self.__serializer.check_if_file_exists(self.__dict_vectorizer_filename) and
+                self.__serializer.check_if_file_exists(self.__encoded_labels_filename)):
             self.__input = self.__serializer.load_sparse_matrix(
                 self.__input_data_filename)
             self.__label_encoder = self.__serializer.deserialize_object(
@@ -39,6 +41,8 @@ class DataProcesser:
                 self.__vectorizer_filename)
             self.__dict_vectorizer = self.__serializer.deserialize_object(
                 self.__dict_vectorizer_filename)
+            self.__encoded_labels = self.__serializer.deserialize_object(
+                self.__encoded_labels_filename)
         else:
             self.__dataFile = dataFile
             self.__data: List[ProcessedProblemReportData] = []
@@ -46,8 +50,10 @@ class DataProcesser:
             self.__vectorizer = TfidfVectorizer(stop_words='english')
             self.__dict_vectorizer = DictVectorizer(sparse=True)
             self.__input: scipy.sparse.csr.csr_matrix = None
+            self.__encoded_labels: List[int] = []
 
             self.__process()
+            self.save()
 
     def __stemm_tokens(self, tokens: List[str]) -> List[str]:
         stemmer = nltk.PorterStemmer()
@@ -92,12 +98,13 @@ class DataProcesser:
         self.__data.append(processed_problem_report_data)
 
     def __encode_labels(self) -> None:
-        labels = set(data.label for data in self.__data)
-        self.__label_encoder.fit_transform(list(labels))
+        labels = [data.label for data in self.__data]
+        self.__label_encoder.fit_transform(labels)
 
         for data in self.__data:
             data.encoded_label = self.__label_encoder.transform([data.label])[
                 0]
+            self.__encoded_labels.append(data.encoded_label)
 
     def __compute_input(self) -> None:
         title_and_description_vector = self.__vectorizer.fit_transform(
@@ -123,6 +130,9 @@ class DataProcesser:
     def get_input(self) -> scipy.sparse.csr.csr_matrix:
         return self.__input
 
+    def get_encoded_labels(self) -> List[int]:
+        return self.__encoded_labels
+
     def save(self) -> None:
         self.__serializer.save_sparse_matrix(
             self.__input_data_filename, self.__input)
@@ -132,3 +142,5 @@ class DataProcesser:
             self.__vectorizer_filename, self.__vectorizer)
         self.__serializer.serialize_object(
             self.__dict_vectorizer_filename, self.__dict_vectorizer)
+        self.__serializer.serialize_object(
+            self.__encoded_labels_filename, self.__encoded_labels)
