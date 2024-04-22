@@ -45,3 +45,8 @@ class Model:
             x_test, y_test)
         print(f'Test loss: {self.__test_loss}')
         print(f'Test accuracy: {self.__test_accuracy}')
+
+    def predict(self, input):
+        prediction = self.__model.predict(input)
+        predicted_label = tf.argmax(prediction, axis=1)
+        return predicted_label[0]

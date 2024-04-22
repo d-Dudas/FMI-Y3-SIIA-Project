@@ -1,0 +1,42 @@
+{
+    "problemReportId": "PR494266",
+    "faultAnalysisId": [
+      "FA562370"
+    ],
+    "attachedPRs": [
+      "PR493639",
+      "PR493889",
+      "PR493936",
+      "PR494217",
+      "PR494221",
+      "PR494262",
+      "PR494406",
+      "PR494407",
+      "PR494786"
+    ],
+    "author": "Boja, Alexandra (Nokia - RO/Timisoara)",
+    "build": "SBTS20A_ENB_0000_000119_000000",
+    "description": "*** DEFAULT TEMPLATE for 2G-3G-4G-5G-SRAN-FDD-TDD-DCM-Micro-Controller common template v1.1.0 (09.05.2018) – PLEASE FILL IT IN BEFORE CREATING A PR AND DO NOT CHANGE / REMOVE ANY SECTION OF THIS TEMPLATE ***\r\n\r\n[1. Detail Test Steps:]\r\na. SBTS on air on SW SBTS20A_ENB_0000_000119_000000 .\r\nb. Modify parameters related to LTERLCR-22975 feature, set actTcpServiceDiff parameter on true .\r\nc. New structure needs to be created: tcpServiceDiffConfig and actTcpUlPowerBoost\r\nd. Activate LTERLCR-22975 feature\r\ne. Feature can be activated from BTS point of view\r\n\r\n[2. Expected Result:]\r\na. SBTS on air on SW SBTS20A_ENB_0000_000119_000000 .\r\nb. Modify parameters related to LTERLCR-22975 feature, set actTcpServiceDiff parameter on true .\r\nc. New structure needs to be created: tcpServiceDiffConfig and actTcpUlPowerBoost\r\nd. Activate LTERLCR-22975 feature\r\ne. Feature can be activated from BTS point of view\r\n\r\n[3. Actual Result:]\r\na. SBTS on air on SW SBTS20A_ENB_0000_000119_000000 . - OK\r\nb. Modify parameters related to LTERLCR-22975 feature, set actTcpServiceDiff parameter on true . - OK\r\nc. New structure needs to be created: tcpServiceDiffConfig and actTcpUlPowerBoost - NOK: After PDL validation error is raised, to create the structure of  tcpServiceDiffConfig, I can't fill the values of the new parameters, because those are fast disappear (please see the attached video from pr traces)\r\nd. -\r\ne. -\r\n\r\n[4. Tester analysis:]\r\nModify parameters related to LTERLCR-22975 feature, set actTcpServiceDiff parameter on true .New structure needs to be created: tcpServiceDiffConfig and actTcpUlPowerBoost. Activate LTERLCR-22975 feature. Feature can be activated from BTS point of view\r\n\r\n\r\n\r\n[5. Log(s) file name containing a fault: (clear indication (exact file name) and timestamp where fault can be found in attached logs)]\r\nLogs can be found on the following location on ROTTA server : \\\\eseefsn50.emea.nsn-net.net\\rotta4internal\\HetRan\\Alexandra_Mihaila\\PR494266.zip\r\n\r\n[6. Test-Line Reference/used HW/configuration/tools/SW version]\r\n- 1 ASIA left - secondary and 1 ASIA right - primary\r\n- 2 ABIA left\r\n- 2 ABIA right \r\n\r\n1L_W3_1.2.5_2.2.5_FXFB_1x3G_GG_1_2;\r\n1L_W3_1.2.6_2.2.6_FRGP.B_1x3G_GBA_1_22;\r\n2L_W3_1.2.1_2.1.2_2.1.3_FXCA_1x3G_1.2.2_2.1.4_2.1.5_FXCA_KE_111_111;\r\n2L_W3_1.2.3_2.2.1_2.2.2_FXDA_1x3G_1.2.4_2.2.3_2.2.4_FXDA_HC_111_111;\r\nBALW_39;BALWG_12\r\n\r\nOMSElementManager, HIT\r\nSBTS20A_ENB_0000_000119_000000\r\n\r\n[7. Used Flags: (list here used R&D flags)]\r\nIn swconfig\r\n\r\n[8. Fault Occurrence Rate:]\r\nHow many times Test Scenario was run?\r\n3\r\nHow many times fault was reproduced?\r\n3\r\nHow many sites in the same live operation was run in case of customer fault? \r\nNA\r\n\r\n[9. Test Scenario History of Execution: (what was changed since it was tested successfully for the last time)]\r\nWas Test Scenario passing before?\r\nYes\r\nWhat was the last SW version Test Scenario was passing?\r\nSBTS00_ENB_9999_190418_000534\r\nWere there any differences between test-lines since last time Test Scenario was passing?\r\nNo\r\nWere there any changes in Test Scenario since last run it passed?\r\nNo\r\n\r\n[10. Test Case Reference: (QC, RP or UTE link)]\r\n[1]LTERLCR-22975_TCP Service Differentiation\r\n\r\n*** END OF DEFAULT TEMPLATE ***",
+    "feature": "RP002262",
+    "groupInCharge": "MANO_HZH_UI",
+    "state": "Closed",
+    "title": "[SBTS20A][AIRSCALE+AIRSCALE] Structure of tcpServiceDiffConfig parameter can't be added when actTcpServiceDiff parameter is set to true",
+    "authorGroup": "NITSIVBTS3",
+    "informationrequestID": [],
+    "statusLog": null,
+    "release": [
+      "SBTS20A"
+    ],
+    "explanationforCorrectionNotNeeded": [],
+    "reasonWhyCorrectionisNotNeeded": [],
+    "faultAnalysisFeature": [
+      "PR492922"
+    ],
+    "faultAnalysisGroupInCharge": [
+      "MANO_HZH_UI"
+    ],
+    "stateChangedtoClosed": "2020-01-10T02:54:17+00:00",
+    "faultAnalysisTitle": [
+      "[SRAN20A][LTE4627]can not config acbstatic parameter in exist ACBPR"
+    ]
+}

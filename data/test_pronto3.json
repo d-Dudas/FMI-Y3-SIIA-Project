@@ -1,0 +1,32 @@
+{
+    "problemReportId": "PR494977",
+    "faultAnalysisId": [
+      "FA563821"
+    ],
+    "attachedPRs": [],
+    "author": "Stefanovici, Emina (Nokia - RO/Timisoara)",
+    "build": "SBTS20A_ENB_0000_000145_000000",
+    "description": "[1. Detail Test Steps:]\r\na.Connection on SBTS via ADMIN possible.\r\nb.From step 15 in Commissioning Wizard, check if all parameters are displayed properly\r\n\r\n[2. Expected Result:]\r\na.Open Commissioning Wizard in Online Mode.\r\nb.All parameters that are displayed at this step are displayed correctly.\r\n\r\n[3. Actual Result:]\r\na.OK\r\nb.NOK(Content from Reference to routing table is not displayed properly inside the box. Please see screenshots attached)\r\n\r\n[4. Tester analysis:]\r\nIssue was already disscussed with Gao, Lingling (NSB - CN/Hangzhou).\r\n\r\n[5. Log(s) file name containing a fault: (clear indication (exact file name) and timestamp where fault can be found in attached logs)]\r\nLogs can be found on the following location on ROTTA server:\r\n\\\\eseefsn50.emea.nsn-net.net\\rotta4internal\\HetRan\\estefano\\Routing Policies_nok.zip\r\n\r\n[6. Test-Line Reference/used HW/configuration/tools/SW version]\r\nHW version: Airscale FSMr4, 1 ASIA + 2 ABIA, 1 FXDB, 1 FXDA\r\nConfiguration: 3 LTE cells , A type config on FXDB, 3 WCDMA cells on FXDA, A type config, 3 GSM cells 4+4+4 on FXDB, A type config\r\nBackhaul configuration: IP \r\nFTM version: in snapshot\r\nSW version: SBTS20A_ENB_0000_000145_000000\r\nBrowser: Chrome 77.0.3865.120  \r\n\r\n\r\n[7. Used Flags: (list here used R&D flags)]\r\nIn snapshot\r\n\r\n[8. Fault Occurrence Rate:] How many times Test Scenario was run?\r\n3\r\nHow many times fault was reproduced?\r\n3\r\nHow many sites in the same live operation was run in case of customer fault?\r\n1\r\n\r\n[9. Test Scenario History of Execution: (what was changed since it was tested successfully for the last time)] Was Test Scenario passing before?\r\nYes\r\nWhat was the last SW version Test Scenario was passing?\r\nNew scenario\r\nWere there any differences between test-lines since last time Test Scenario was passing?\r\nNo\r\nWere there any changes in Test Scenario since last run it passed?\r\nNo\r\n\r\n[10. Test Case Reference: (QC, RP or UTE link)]\r\nNo specific TC",
+    "feature": "SR001503 Common Web Element Manager for LTE and SRAN",
+    "groupInCharge": "MANO_HZH_UI",
+    "state": "Closed",
+    "title": "[SBTS20A][AIRSCALE] Improper display for Reference to routing table box in Commissioning Wizard ",
+    "authorGroup": "NITSIVBTS3",
+    "informationrequestID": [],
+    "statusLog": null,
+    "release": [
+      "SBTS20A"
+    ],
+    "explanationforCorrectionNotNeeded": [],
+    "reasonWhyCorrectionisNotNeeded": [],
+    "faultAnalysisFeature": [
+      "PR487849"
+    ],
+    "faultAnalysisGroupInCharge": [
+      "MANO_HZH_UI"
+    ],
+    "stateChangedtoClosed": "2020-01-14T14:14:17+00:00",
+    "faultAnalysisTitle": [
+      "[SBTS20A][AIRSCALE] Improper display for Reference to routing table box in Commissioning Wizard "
+    ]
+}

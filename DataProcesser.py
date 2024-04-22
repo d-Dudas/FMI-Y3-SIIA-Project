@@ -144,3 +144,27 @@ class DataProcesser:
             self.__dict_vectorizer_filename, self.__dict_vectorizer)
         self.__serializer.serialize_object(
             self.__encoded_labels_filename, self.__encoded_labels)
+
+    def process_pronto(self, pronto: ProblemReport) -> scipy.sparse.csr.csr_matrix:
+        processed_title_and_description: str = self.__extract_title_and_description(
+            pronto)
+
+        useful_features: Dict[str, str | List[str]
+                              ] = self.__extract_useful_features(pronto)
+
+        processed_problem_report_data: ProcessedProblemReportData = ProcessedProblemReportData(
+            processed_title_and_description, useful_features, pronto.state)
+
+        input_vector = self.__vectorizer.transform(
+            [processed_problem_report_data.processed_title_and_description])
+
+        useful_features_vector = self.__dict_vectorizer.transform(
+            [processed_problem_report_data.useful_features])
+
+        input = scipy.sparse.hstack(
+            [input_vector, useful_features_vector])
+
+        return input
+
+    def get_label(self, encoded_label: int) -> str:
+        return self.__label_encoder.inverse_transform([encoded_label])[0]
