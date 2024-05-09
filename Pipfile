@@ -8,6 +8,8 @@ nltk = "*"
 scikit-learn = "*"
 tensorflow = "*"
 matplotlib = "*"
+numpy = "*"
+pandas = "*"
 
 [dev-packages]
 ipykernel = "*"
